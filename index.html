@@ -14,6 +14,8 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
+            color: #fff;
+
         }
         .nav {
             display: flex;
@@ -95,7 +97,39 @@
 </head>
 <body>
 
-    <!-- Navigation Menu -->
+    <form>
+        <label for="lang-switch">Language: </label>
+        <select id="lang-switch">
+            <option value="en" selected>🇬🇧 English</option>
+            <option value="it">🇮🇹 Italiano</option>
+        </select>
+    </form>
+
+<div lang="it" class="lang-section" style="display:none;">
+    <div class="nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">Su di Me</a>
+        <a href="skills.html">Competenze</a>
+    </div>
+
+    <div class="card">
+        <img class="avatar" src="Roberto_Negro.png" alt="Foto">
+        <h1>Roberto Negro</h1>
+        <p>Consulente di sicurezza Informatica | Hacker Etico</p>
+        <p>📧 robne996@gmail.com</p>
+        <p>📍 Londra, Regno Unito</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/roberto-negro-36b545162" target="_blank">🔗 LinkedIn</a>
+            <a href="https://www.superprof.co.uk/cyber-security-engineer-offering-security-computer-networks-memory-forensics-computer-science-tutoring.html" target="_blank"> 👨‍🏫 Tutoring</a>
+        </div>
+        <a href="https://www.superprof.co.uk/cyber-security-engineer-offering-security-computer-networks-memory-forensics-computer-science-tutoring.html" class="btn" target="_blank"> Servizi di Tutoring</a>
+        <div class="skills">
+            <p>🔒 Hacking Etico | 🔐 Penetration Testing |  <br>👨‍🏫 Tutoring Accademico</p>
+        </div>
+    </div>
+</div>
+
+<div lang="en" class="lang-section">
     <div class="nav">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -117,6 +151,20 @@
             <p>🔒 Ethical Hacking | 🔐 Penetration Testing |  <br>👨‍🏫 Academic Tutoring</p>
         </div>
     </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#lang-switch').change(function () {
+        var lang = $(this).val(); // Get selected language
+        // Hide all language sections
+        $('.lang-section').hide();
+        // Show the selected language's section
+        $('[lang="' + lang + '"]').show();
+    });
+});
+</script>
 
 </body>
 </html>
