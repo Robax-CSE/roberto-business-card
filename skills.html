@@ -50,7 +50,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
-            opacity: 0; /* Start invisible */
+            opacity: 0;
             animation: fadeIn 1.5s forwards;
         }
         @keyframes fadeIn {
@@ -69,7 +69,7 @@
         }
         .skill {
             margin-bottom: 25px;
-            opacity: 0; /* Start invisible */
+            opacity: 0;
             animation: slideIn 1s forwards;
         }
         @keyframes slideIn {
@@ -106,101 +106,185 @@
 </head>
 <body>
 
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
+    <form>
+        <label for="lang-switch">Language: </label>
+        <select id="lang-switch">
+            <option value="en" selected>🇬🇧 English</option>
+            <option value="it">🇮🇹 Italiano</option>
+        </select>
+    </form>
+
+    <div lang="en" class="lang-section">
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </div>
+
+        <div class="skills-container">
+            <h1>Skills</h1>
+
+            <!-- Skill 1: Linux -->
+            <div class="skill" style="animation-delay: 0.2s;">
+                <div class="skill-name">Linux 🐧</div>
+            </div>
+
+            <!-- Skill 2: Network Configuration -->
+            <div class="skill" style="animation-delay: 0.4s;">
+                <div class="skill-name">Network Configuration 🌐</div>
+            </div>
+
+            <!-- Skill 3: VPNs Configuration -->
+            <div class="skill" style="animation-delay: 0.6s;">
+                <div class="skill-name">VPNs Configuration 🔒</div>
+            </div>
+
+            <!-- Skill 4: Web Development -->
+            <div class="skill" style="animation-delay: 0.8s;">
+                <div class="skill-name">Web Development 💻</div>
+            </div>
+
+            <!-- Skill 5: IT Support -->
+            <div class="skill" style="animation-delay: 1s;">
+                <div class="skill-name">IT Support 🖥️</div>
+            </div>
+
+            <!-- Skill 6: Network Protocols Analysis -->
+            <div class="skill" style="animation-delay: 1.2s;">
+                <div class="skill-name">Network Protocols Analysis 📡</div>
+            </div>
+
+            <!-- Skill 7: Digital Forensics -->
+            <div class="skill" style="animation-delay: 1.4s;">
+                <div class="skill-name">Digital Forensics 🔍</div>
+            </div>
+
+            <!-- Skill 8: Memory Analysis -->
+            <div class="skill" style="animation-delay: 1.6s;">
+                <div class="skill-name">Memory Analysis</div>
+            </div>
+
+            <!-- Skill 9: Penetration Testing -->
+            <div class="skill" style="animation-delay: 1.8s;">
+                <div class="skill-name">Penetration Testing 🕵️‍♂️</div>
+            </div>
+
+            <!-- Skill 10: eDiscovery -->
+            <div class="skill" style="animation-delay: 2s;">
+                <div class="skill-name">eDiscovery 🗃️</div>
+            </div>
+
+            <!-- Skill 11: Cyber Compliance -->
+            <div class="skill" style="animation-delay: 2.2s;">
+                <div class="skill-name">Cyber Compliance ✅</div>
+            </div>
+
+            <!-- Skill 12: Windows -->
+            <div class="skill" style="animation-delay: 2.4s;">
+                <div class="skill-name">Windows 💻</div>
+            </div>
+
+            <!-- Skill 13: Programming -->
+            <div class="skill" style="animation-delay: 2.6s;">
+                <div class="skill-name">Programming 👨‍💻</div>
+            </div>
+
+            <!-- Skill 14: Blockchains and Smart Contracts -->
+            <div class="skill" style="animation-delay: 2.8s;">
+                <div class="skill-name">Blockchains & Smart Contracts ⛓️</div>
+            </div>
+
+            <!-- Skill 15: Microsoft Office -->
+            <div class="skill" style="animation-delay: 3s;">
+                <div class="skill-name">Microsoft Office 🏢</div>
+            </div>
+
+            <!-- Skill Icons -->
+            <div class="skill-icons">
+                <i class="fa fa-linux"></i> <!-- Icon for Linux -->
+                <i class="fa fa-network-wired"></i> <!-- Icon for Network -->
+                <i class="fa fa-shield-alt"></i> <!-- Icon for Security -->
+                <i class="fa fa-code"></i> <!-- Icon for Programming -->
+                <i class="fa fa-cloud"></i> <!-- Icon for Cloud -->
+            </div>
+        </div>
     </div>
 
-    <div class="skills-container">
-        <h1>Skills</h1>
-
-        <!-- Skill 1: Linux -->
-        <div class="skill" style="animation-delay: 0.2s;">
-            <div class="skill-name">Linux 🐧</div>
+    <div lang="it" class="lang-section" style="display:none;">
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">Su di Me</a>
         </div>
 
-        <!-- Skill 2: Network Configuration -->
-        <div class="skill" style="animation-delay: 0.4s;">
-            <div class="skill-name">Network Configuration 🌐</div>
-        </div>
+        <div class="skills-container">
+            <h1>Competenze</h1>
 
-        <!-- Skill 3: VPNs Configuration -->
-        <div class="skill" style="animation-delay: 0.6s;">
-            <div class="skill-name">VPNs Configuration 🔒</div>
-        </div>
+            <div class="skill" style="animation-delay: 0.2s;">
+                <div class="skill-name">Linux 🐧</div>
+            </div>
+            <div class="skill" style="animation-delay: 0.4s;">
+                <div class="skill-name">Configurazione di Rete 🌐</div>
+            </div>
+            <div class="skill" style="animation-delay: 0.6s;">
+                <div class="skill-name">Configurazione VPN 🔒</div>
+            </div>
+            <div class="skill" style="animation-delay: 0.8s;">
+                <div class="skill-name">Sviluppo Web 💻</div>
+            </div>
+            <div class="skill" style="animation-delay: 1s;">
+                <div class="skill-name">Supporto IT 🖥️</div>
+            </div>
+            <div class="skill" style="animation-delay: 1.2s;">
+                <div class="skill-name">Analisi dei Protocolli di Rete 📡</div>
+            </div>
+            <div class="skill" style="animation-delay: 1.4s;">
+                <div class="skill-name">Forense Digitale 🔍</div>
+            </div>
+            <div class="skill" style="animation-delay: 1.6s;">
+                <div class="skill-name">Analisi archivi digitali e memoria volatile</div>
+            </div>
+            <div class="skill" style="animation-delay: 1.8s;">
+                <div class="skill-name">Penetration Testing 🕵️‍♂️</div>
+            </div>
+            <div class="skill" style="animation-delay: 2s;">
+                <div class="skill-name">eDiscovery 🗃️</div>
+            </div>
+            <div class="skill" style="animation-delay: 2.2s;">
+                <div class="skill-name">Requisiti legali in Cyber ✅</div>
+            </div>
+            <div class="skill" style="animation-delay: 2.4s;">
+                <div class="skill-name">Windows 💻</div>
+            </div>
+            <div class="skill" style="animation-delay: 2.6s;">
+                <div class="skill-name">Programmazione 👨‍💻</div>
+            </div>
+            <div class="skill" style="animation-delay: 2.8s;">
+                <div class="skill-name">Blockchain ⛓️</div>
+            </div>
+            <div class="skill" style="animation-delay: 3s;">
+                <div class="skill-name">Microsoft Office 🏢</div>
+            </div>
 
-        <!-- Skill 4: Web Development -->
-        <div class="skill" style="animation-delay: 0.8s;">
-            <div class="skill-name">Web Development 💻</div>
-        </div>
-
-        <!-- Skill 5: IT Support -->
-        <div class="skill" style="animation-delay: 1s;">
-            <div class="skill-name">IT Support 🖥️</div>
-        </div>
-
-        <!-- Skill 6: Network Protocols Analysis -->
-        <div class="skill" style="animation-delay: 1.2s;">
-            <div class="skill-name">Network Protocols Analysis 📡</div>
-        </div>
-
-        <!-- Skill 7: Digital Forensics -->
-        <div class="skill" style="animation-delay: 1.4s;">
-            <div class="skill-name">Digital Forensics 🔍</div>
-        </div>
-
-        <!-- Skill 8: Memory Analysis -->
-        <div class="skill" style="animation-delay: 1.6s;">
-            <div class="skill-name">Memory Analysis 🧠</div>
-        </div>
-
-        <!-- Skill 9: Penetration Testing -->
-        <div class="skill" style="animation-delay: 1.8s;">
-            <div class="skill-name">Penetration Testing 🕵️‍♂️</div>
-        </div>
-
-        <!-- Skill 10: eDiscovery -->
-        <div class="skill" style="animation-delay: 2s;">
-            <div class="skill-name">eDiscovery 🗃️</div>
-        </div>
-
-        <!-- Skill 11: Cyber Compliance -->
-        <div class="skill" style="animation-delay: 2.2s;">
-            <div class="skill-name">Cyber Compliance ✅</div>
-        </div>
-
-        <!-- Skill 12: Windows -->
-        <div class="skill" style="animation-delay: 2.4s;">
-            <div class="skill-name">Windows 💻</div>
-        </div>
-
-        <!-- Skill 13: Programming -->
-        <div class="skill" style="animation-delay: 2.6s;">
-            <div class="skill-name">Programming 👨‍💻</div>
-        </div>
-
-        <!-- Skill 14: Blockchains and Smart Contracts -->
-        <div class="skill" style="animation-delay: 2.8s;">
-            <div class="skill-name">Blockchains & Smart Contracts ⛓️</div>
-        </div>
-
-        <!-- Skill 15: Microsoft Office -->
-        <div class="skill" style="animation-delay: 3s;">
-            <div class="skill-name">Microsoft Office 🏢</div>
-        </div>
-
-        <!-- Skill Icons -->
-        <div class="skill-icons">
-            <i class="fa fa-linux"></i> <!-- Icon for Linux -->
-            <i class="fa fa-network-wired"></i> <!-- Icon for Network -->
-            <i class="fa fa-shield-alt"></i> <!-- Icon for Security -->
-            <i class="fa fa-code"></i> <!-- Icon for Programming -->
-            <i class="fa fa-cloud"></i> <!-- Icon for Cloud -->
+            <div class="skill-icons">
+                <i class="fa fa-linux"></i>
+                <i class="fa fa-network-wired"></i>
+                <i class="fa fa-shield-alt"></i>
+                <i class="fa fa-code"></i>
+                <i class="fa fa-cloud"></i>
+            </div>
         </div>
     </div>
 
-    <!-- FontAwesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-
+    <script>
+        const langSwitch = document.getElementById("lang-switch");
+        langSwitch.addEventListener("change", function () {
+            const sections = document.querySelectorAll(".lang-section");
+            sections.forEach(section => {
+                section.style.display = "none"; // Hide all sections
+            });
+            const selectedLang = langSwitch.value;
+            const selectedSection = document.querySelector(`div[lang="${selectedLang}"]`);
+            selectedSection.style.display = "block"; // Show the selected language section
+        });
+    </script>
 </body>
 </html>
