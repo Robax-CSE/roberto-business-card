@@ -105,7 +105,7 @@
         </select>
     </form>
 
-<div lang="it" class="lang-section" style="display:none;">
+<div lang="it" class="lang-section">
     <div class="nav">
         <a href="index.html">Home</a>
         <a href="about.html">Su di Me</a>
@@ -137,7 +137,7 @@
     </div>
 
     <div class="card">
-        <img class="avatar" src="Roberto_Negro.png" alt="Your Photo">
+        <img class="avatar" src="Roberto_Negro.png" alt="Photo">
         <h1>Roberto Negro</h1>
         <p>Cybersecurity Professional | Ethical Hacker</p>
         <p>📧 robne996@gmail.com</p>
@@ -154,17 +154,34 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script>
 $(document).ready(function() {
+    // Check if there's a language cookie set
+    var langCookie = Cookies.get('lang');
+    if (langCookie) {
+        $('#lang-switch').val(langCookie); // Set the language selector to the cookie value
+        $('.lang-section').hide();
+        $('[lang="' + langCookie + '"]').show(); // Show the selected language section
+    } else {
+        // If no cookie is set, default to English
+        $('.lang-section').hide();
+        $('[lang="en"]').show();
+    }
+
+    // Change the language when user selects a new one
     $('#lang-switch').change(function () {
-        var lang = $(this).val(); // Get selected language
+        var lang = $(this).val(); // Get the selected language
+        Cookies.set('lang', lang, { expires: 7 }); // Set the cookie to remember the language (expires in 7 days)
+        
         // Hide all language sections
         $('.lang-section').hide();
-        // Show the selected language's section
+        // Show the selected language section
         $('[lang="' + lang + '"]').show();
     });
 });
 </script>
+
 
 </body>
 </html>
