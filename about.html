@@ -27,7 +27,6 @@
             justify-content: center;
             gap: 20px;
             margin-bottom: 20px;
-            background: rgba(0, 0, 0, 0.7);
             padding: 10px;
             border-radius: 10px;
         }
@@ -54,86 +53,97 @@
             animation: fadeIn 1s forwards;
         }
         @keyframes fadeIn {
-            0% {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            0% { transform: translateY(-50px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
         }
-        h1 {
-            color: #00e676;
-            margin-bottom: 20px;
-        }
-        p {
-            font-size: 16px;
-            line-height: 1.6;
-            color: #aaa;
-        }
-        .highlight {
-            color: #00e676;
-            font-weight: bold;
-        }
-        .icon-container {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-        }
-        .icon-container i {
-            font-size: 30px;
-            color: #00e676;
-            transition: color 0.3s;
-        }
-        .icon-container i:hover {
-            color: #00796b;
-        }
+        h1 { color: #00e676; margin-bottom: 20px; }
+        p { font-size: 16px; line-height: 1.6; color: #aaa; }
+        .highlight { color: #00e676; font-weight: bold; }
+        .icon-container { display: flex; justify-content: center; gap: 30px; margin-top: 30px; }
+        .icon-container i { font-size: 30px; color: #00e676; transition: color 0.3s; }
+        .icon-container i:hover { color: #00796b; }
     </style>
 </head>
 <body>
 
-    <div class="nav">
-        <a href="index.html">Home</a>
-        <a href="skills.html">Skills</a>
-    </div>
+    <form>
+        <label for="lang-switch">Language: </label>
+        <select id="lang-switch">
+            <option value="en" selected>🇬🇧 English</option>
+            <option value="it">🇮🇹 Italiano</option>
+        </select>
+    </form>
 
-    <div class="about-container">
-        <h1>About Me</h1>
-
-        <p>
-            IT Professional specializing in <span class="highlight">Network Engineering</span> and <span class="highlight">Information Security</span> 
-            with a <span class="highlight">first-class honours BSc in Cyber Security and Digital Forensics</span>. Experienced in managing and securing virtual environments, 
-            with expertise in <span class="highlight">firewall configuration</span>, <span class="highlight">threat monitoring</span>, and <span class="highlight">cyber defense strategies</span>.
-        </p>
-
-        <p>
-            Hands-on proficiency in <span class="highlight">penetration testing</span>, <span class="highlight">CTF challenges</span>, and <span class="highlight">offensive security practices</span>. 
-            Skilled at identifying and mitigating vulnerabilities to strengthen systems and networks. A background in <span class="highlight">IT analysis</span> and <span class="highlight">accounting</span> 
-            provides a unique strategic approach to solving complex cybersecurity challenges.
-        </p>
-
-        <p>
-            Offers hands-on tutoring in <span class="highlight">IT security</span>, <span class="highlight">memory forensics</span> (using tools like <span class="highlight">Volatility</span> 
-            and <span class="highlight">Autopsy</span>), and <span class="highlight">computer networks</span>. Lessons are designed to ensure students gain practical, real-world skills that can be immediately applied.
-        </p>
-
-        <p>
-            A proactive approach to problem-solving, utilizing <span class="highlight">lateral thinking</span> to design effective and innovative solutions to complex problems.
-        </p>
-
-        <div class="icon-container">
-            <i class="fa fa-lock" title="Security"></i>
-            <i class="fa fa-laptop" title="IT Support"></i>
-            <i class="fa fa-code" title="Programming"></i>
-            <i class="fa fa-cogs" title="Networking"></i>
-            <i class="fa fa-graduation-cap" title="Tutoring"></i>
+    <div lang="en" class="lang-section">
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="skills.html">Skills</a>
+        </div>
+        <div class="about-container">
+            <h1>About Me</h1>
+            <p>
+                IT Professional specializing in <span class="highlight">Network Engineering</span> and <span class="highlight">Information Security</span> 
+                with a <span class="highlight">first-class honours BSc in Cyber Security and Digital Forensics</span>. Experienced in managing and securing virtual environments, 
+                with expertise in <span class="highlight">firewall configuration</span>, <span class="highlight">threat monitoring</span>, and <span class="highlight">cyber defense strategies</span>.
+            </p><br><br>
+    
+            <p>
+                Hands-on proficiency in <span class="highlight">penetration testing</span>, <span class="highlight">CTF challenges</span>, and <span class="highlight">offensive security practices</span>. 
+                Skilled at identifying and mitigating vulnerabilities to strengthen systems and networks. A background in <span class="highlight">IT analysis</span> and <span class="highlight">accounting</span> 
+                provides a unique strategic approach to solving complex cybersecurity challenges.
+            </p><br><br>
+    
+            <p>
+                Offers hands-on tutoring in <span class="highlight">IT security</span>, <span class="highlight">memory forensics</span> (using tools like <span class="highlight">Volatility</span> 
+                and <span class="highlight">Autopsy</span>), and <span class="highlight">computer networks</span>. Lessons are designed to ensure students gain practical, real-world skills that can be immediately applied.
+            </p><br><br>
+    
+            <p>
+                A proactive approach to problem-solving, utilizing <span class="highlight">lateral thinking</span> to design effective and innovative solutions to complex problems.
+            </p>
         </div>
     </div>
 
-    <!-- FontAwesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <div lang="it" class="lang-section" style="display:none;">
+        <div class="nav">
+            <a href="index.html">Home</a>
+            <a href="skills.html">Competenze</a>
+        </div>
+        <div class="about-container">
+            <h1>Su di Me</h1>
+            <p>
+                Roberto è un professionista IT con esperienza in <span class="highlight">Ingegneria delle Reti</span> e <span class="highlight">Sicurezza Informatica</span>, 
+                laureato con lode in <span class="highlight">Sicurezza Informatica e Forense Digitale</span>. Vanta una solida esperienza nella gestione e protezione di ambienti virtuali, 
+                con competenze avanzate nella <span class="highlight">configurazione di firewall</span>, <span class="highlight">monitoraggio delle minacce</span> e <span class="highlight">strategie di difesa informatica</span>.
+            </p><br><br>
+            
+            <p>
+                Esperto in <span class="highlight">penetration testing</span>, <span class="highlight">sfide CTF</span> e pratiche di <span class="highlight">sicurezza offensiva</span>, 
+                con una forte capacità nell’identificare e mitigare vulnerabilità per rafforzare i sistemi e le reti. Un background in <span class="highlight">analisi IT</span> e <span class="highlight">contabilità</span> 
+                consente un approccio strategico unico nella risoluzione di sfide complesse in ambito cyber.
+            </p><br><br>
+            
+            <p>
+                Offre tutoring accademico pratico in <span class="highlight">sicurezza IT</span>, <span class="highlight">analisi forense su dispositivi di memorizzazione</span> (utilizzando strumenti come <span class="highlight">Volatility</span> 
+                e <span class="highlight">Autopsy</span>), e <span class="highlight">reti informatiche</span>. Le lezioni sono orientate a garantire che gli studenti acquisiscano competenze pratiche 
+                e concrete, immediatamente applicabili nel mondo reale.
+            </p><br><br>
+            
+            <p>
+                Adotta un approccio proattivo alla risoluzione dei problemi, utilizzando <span class="highlight">pensiero laterale</span> per ideare soluzioni efficaci e innovative a problemi complessi.
+            </p>            
+        </div>
+    </div>
 
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#lang-switch').change(function () {
+            var lang = $(this).val();
+            $('.lang-section').hide();
+            $('[lang="' + lang + '"]').show();
+        });
+    });
+    </script>
 </body>
 </html>
