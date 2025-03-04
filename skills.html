@@ -109,7 +109,7 @@
     <form>
         <label for="lang-switch">Language: </label>
         <select id="lang-switch">
-            <option value="en" selected>🇬🇧 English</option>
+            <option value="en">🇬🇧 English</option>
             <option value="it">🇮🇹 Italiano</option>
         </select>
     </form>
@@ -209,7 +209,7 @@
         </div>
     </div>
 
-    <div lang="it" class="lang-section" style="display:none;">
+    <div lang="it" class="lang-section">
         <div class="nav">
             <a href="index.html">Home</a>
             <a href="about.html">Su di Me</a>
@@ -274,17 +274,35 @@
         </div>
     </div>
 
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
     <script>
-        const langSwitch = document.getElementById("lang-switch");
-        langSwitch.addEventListener("change", function () {
-            const sections = document.querySelectorAll(".lang-section");
-            sections.forEach(section => {
-                section.style.display = "none"; // Hide all sections
-            });
-            const selectedLang = langSwitch.value;
-            const selectedSection = document.querySelector(`div[lang="${selectedLang}"]`);
-            selectedSection.style.display = "block"; // Show the selected language section
+    $(document).ready(function() {
+        // Check if there's a language cookie set
+        var langCookie = Cookies.get('lang');
+        if (langCookie) {
+            $('#lang-switch').val(langCookie); // Set the language selector to the cookie value
+            $('.lang-section').hide();
+            $('[lang="' + langCookie + '"]').show(); // Show the selected language section
+        } else {
+            // If no cookie is set, default to English
+            $('.lang-section').hide();
+            $('[lang="en"]').show();
+        }
+    
+        // Change the language when user selects a new one
+        $('#lang-switch').change(function () {
+            var lang = $(this).val(); // Get the selected language
+            Cookies.set('lang', lang, { expires: 7 }); // Set the cookie to remember the language (expires in 7 days)
+            
+            // Hide all language sections
+            $('.lang-section').hide();
+            // Show the selected language section
+            $('[lang="' + lang + '"]').show();
         });
+    });
     </script>
+    
 </body>
 </html>
