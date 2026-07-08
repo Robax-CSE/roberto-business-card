@@ -249,7 +249,7 @@
       <img class="avatar" src="Roberto_Negro.png" alt="Roberto Negro">
       <div class="status-block">
         <div>host: <b>London, UK</b></div>
-        <div>status: <span class="ok">● active - monitoring client infrastructure</span></div>
+        <div>status: <span class="ok">● active — monitoring client infrastructure</span></div>
       </div>
     </div>
 
@@ -268,6 +268,10 @@
         <a href="https://wa.me/447920224546" target="_blank" rel="noopener">+44 7920 224546</a>
       </li>
       <li>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <a href="tel:+443303501525">0330 350 1525</a>
+      </li>
+      <li>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
         <a href="mailto:robne996@gmail.com">robne996@gmail.com</a>
       </li>
@@ -281,6 +285,10 @@
       <a class="btn btn-primary" href="https://wa.me/447920224546" target="_blank" rel="noopener" id="cta-contact">→ Get in touch</a>
       <button class="btn btn-ghost" type="button" onclick="openModal('about')" id="cta-about">./about</button>
       <button class="btn btn-ghost" type="button" onclick="openModal('skills')" id="cta-skills">./skills</button>
+      <button class="btn btn-ghost" type="button" onclick="downloadVCard()" id="cta-vcard">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        <span id="cta-vcard-label">Add to Contacts</span>
+      </button>
     </div>
 
     <div class="tutor-cta">
@@ -403,6 +411,7 @@ const LANG_STRINGS = {
     cta: '→ Get in touch',
     about: './about',
     skills: './skills',
+    vcard: 'Add to Contacts',
     tutorMsg: 'Seeking to learn? <b>I can teach you.</b>',
     tutorBtn: 'View tutoring →'
   },
@@ -410,6 +419,7 @@ const LANG_STRINGS = {
     cta: '→ Contattami',
     about: './about',
     skills: './skills',
+    vcard: 'Aggiungi ai Contatti',
     tutorMsg: 'Vuoi imparare? <b>Posso insegnarti.</b>',
     tutorBtn: 'Vedi tutoring →'
   }
@@ -421,6 +431,7 @@ function setLang(lang){
   document.getElementById('cta-contact').textContent = s.cta;
   document.getElementById('cta-about').textContent = s.about;
   document.getElementById('cta-skills').textContent = s.skills;
+  document.getElementById('cta-vcard-label').textContent = s.vcard;
   document.getElementById('tutor-msg').innerHTML = s.tutorMsg;
   document.getElementById('tutor-btn').textContent = s.tutorBtn;
   document.querySelectorAll('[data-en]').forEach(el => {
@@ -450,6 +461,33 @@ function typeStep(){
 typeStep();
 
 // modal controls
+function downloadVCard(){
+  const lines = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:Negro;Roberto;;;',
+    'FN:Roberto Negro',
+    'ORG:ITG',
+    'TITLE:Cybersecurity Engineer',
+    'TEL;TYPE=CELL:+447920224546',
+    'TEL;TYPE=WORK,VOICE:+443303501525',
+    'EMAIL:robne996@gmail.com',
+    'URL:https://www.linkedin.com/in/roberto-negro-36b545162',
+    'ADR;TYPE=WORK:;;London;;;;United Kingdom',
+    'END:VCARD'
+  ];
+  const vcard = lines.join('\r\n');
+  const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = 'Roberto_Negro.vcf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
 function openModal(name){
   document.getElementById('modal-' + name).classList.add('open');
   document.body.style.overflow = 'hidden';
