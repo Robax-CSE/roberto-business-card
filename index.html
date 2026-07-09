@@ -79,20 +79,25 @@
   .dot.green{background:var(--accent); box-shadow:0 0 8px rgba(63,198,179,0.6); animation:pulse 2.6s ease-in-out infinite;}
   @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:0.45;}}
 
+  .addcontact-row{display:flex; gap:10px; flex-wrap:wrap; margin:4px 0 14px;}
   .addcontact-cta{
     display:inline-flex; align-items:center; justify-content:center; gap:9px;
     font-family:var(--mono); font-weight:700; font-size:13px; letter-spacing:0.02em;
     color:#08131f; background:#5b9bf2;
     border:1px solid #5b9bf2; border-radius:8px;
-    padding:11px 18px; margin:4px 0 18px;
+    padding:11px 18px;
     cursor:pointer;
-    animation: addContactPulse 1.7s ease-in-out infinite;
   }
   .addcontact-cta:hover{background:#78acf5;}
-  @keyframes addContactPulse{
-    0%,100%{ box-shadow:0 0 0 rgba(91,155,242,0.5); transform:scale(1); }
-    50%{ box-shadow:0 0 22px rgba(91,155,242,0.7); transform:scale(1.02); }
+  .addreminder-cta{
+    display:inline-flex; align-items:center; justify-content:center; gap:9px;
+    font-family:var(--mono); font-weight:600; font-size:13px; letter-spacing:0.02em;
+    color:var(--text); background:var(--surface2);
+    border:1px solid var(--border); border-radius:8px;
+    padding:11px 18px;
+    cursor:pointer;
   }
+  .addreminder-cta:hover{border-color:var(--accent); color:var(--accent);}
 
   .followup-toast{
     display:none; align-items:center; justify-content:space-between; gap:12px;
@@ -168,7 +173,7 @@
     border:1px solid rgba(63,198,179,0.22);
     padding:5px 10px; border-radius:5px;
   }
-  
+
   .cta-row{display:flex; gap:10px; margin-bottom:16px; flex-wrap:wrap;}
   .btn{
     font-family:var(--mono); font-size:12.5px; letter-spacing:0.02em;
@@ -177,7 +182,7 @@
     border:1px solid var(--border); color:var(--text-dim);
     cursor:pointer; background:none;
   }
-  .btn-primary{background:var(--accent); color:#06110f; font-weight:600; border-color:var(--accent);}
+  .btn-primary{background:var(--accent); color:#06110f; font-weight:700; border-color:var(--accent); font-size:14.5px; padding:13px 22px;}
   .btn-primary:hover{background:#57d4c2;}
   .btn-ghost:hover{color:var(--text); border-color:var(--text-dim);}
 
@@ -241,7 +246,6 @@
   .name{color:var(--text); flex:1;}
 
   @media (prefers-reduced-motion: reduce){
-    .addcontact-cta{animation:none;}
     .dot.green{animation:none;}
     #typed-name .cursor{animation:none;}
   }
@@ -323,17 +327,21 @@
 
     <div class="cta-row" style="margin-top:18px;">
       <a class="btn btn-primary" href="https://wa.me/447920224546" target="_blank" rel="noopener" id="cta-contact">→ Get in touch</a>
-      <button class="btn btn-ghost" type="button" onclick="openModal('about')" id="cta-about">./about</button>
-      <button class="btn btn-ghost" type="button" onclick="openModal('skills')" id="cta-skills">./skills</button>
     </div>
 
-    <button class="addcontact-cta" type="button" onclick="downloadVCard()" id="cta-vcard">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-      <span id="cta-vcard-label">Add to Contacts</span>
-    </button>
+    <div class="addcontact-row">
+      <button class="addcontact-cta" type="button" onclick="downloadVCard()" id="cta-vcard">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        <span id="cta-vcard-label">Add to Contacts</span>
+      </button>
+      <button class="addreminder-cta" type="button" onclick="downloadFollowUpEvent()" id="cta-reminder">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span id="cta-reminder-label">Schedule a Catch-up</span>
+      </button>
+    </div>
 
     <div class="followup-toast" id="followup-toast">
-      <div class="toast-text" id="followup-toast-msg">Contact saved, and a catch-up reminder was added to your calendar for next week.</div>
+      <div class="toast-text" id="followup-toast-msg">Contact saved.</div>
       <div class="toast-actions">
         <button class="toast-close" type="button" onclick="closeFollowupToast()" aria-label="Dismiss">✕</button>
       </div>
@@ -460,29 +468,34 @@ const LANG_STRINGS = {
     about: './about',
     skills: './skills',
     vcard: 'Add to Contacts',
+    reminder: 'Schedule a Catch-up',
     tutorMsg: 'Seeking to learn? <b>I can teach you.</b>',
     tutorBtn: 'View tutoring →',
-    toastMsg: 'Contact saved, and a catch-up reminder was added to your calendar for next week.'
+    toastMsgContact: 'Contact saved to your device.',
+    toastMsgReminder: 'Catch-up reminder added for next week.'
   },
   it: {
     cta: '→ Contattami',
     about: './about',
     skills: './skills',
     vcard: 'Aggiungi ai Contatti',
+    reminder: 'Pianifica un Follow-up',
     tutorMsg: 'Vuoi imparare? <b>Posso insegnarti.</b>',
     tutorBtn: 'Vedi tutoring →',
-    toastMsg: 'Contatto salvato: ho aggiunto anche un promemoria di follow-up al tuo calendario per la prossima settimana.'
+    toastMsgContact: 'Contatto salvato sul tuo dispositivo.',
+    toastMsgReminder: 'Promemoria di follow-up aggiunto per la prossima settimana.'
   }
 };
 
+let currentLang = 'en';
+
 function setLang(lang){
   document.documentElement.lang = lang;
+  currentLang = lang;
   const s = LANG_STRINGS[lang];
   document.getElementById('cta-contact').textContent = s.cta;
-  document.getElementById('cta-about').textContent = s.about;
-  document.getElementById('cta-skills').textContent = s.skills;
   document.getElementById('cta-vcard-label').textContent = s.vcard;
-  document.getElementById('followup-toast-msg').textContent = s.toastMsg;
+  document.getElementById('cta-reminder-label').textContent = s.reminder;
   document.getElementById('tutor-msg').innerHTML = s.tutorMsg;
   document.getElementById('tutor-btn').textContent = s.tutorBtn;
   document.querySelectorAll('[data-en]').forEach(el => {
@@ -539,15 +552,16 @@ function downloadVCard(){
   link.click();
   document.body.removeChild(link);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  showFollowupToast();
-  setTimeout(downloadFollowUpEvent, 600);
+  showFollowupToast('vcard');
 }
 
-function showFollowupToast(){
+function showFollowupToast(kind){
   const toast = document.getElementById('followup-toast');
+  const msgEl = document.getElementById('followup-toast-msg');
+  msgEl.textContent = kind === 'reminder' ? LANG_STRINGS[currentLang].toastMsgReminder : LANG_STRINGS[currentLang].toastMsgContact;
   toast.classList.add('show');
   clearTimeout(window._followupToastTimer);
-  window._followupToastTimer = setTimeout(closeFollowupToast, 6000);
+  window._followupToastTimer = setTimeout(closeFollowupToast, 5000);
 }
 
 function closeFollowupToast(){
@@ -574,8 +588,8 @@ function downloadFollowUpEvent(){
     'DTSTAMP:' + stamp,
     'DTSTART;VALUE=DATE:' + dateOnly(start),
     'DTEND;VALUE=DATE:' + dateOnly(end),
-    'SUMMARY:Catch up with Roberto from IT And General',
-    'DESCRIPTION:Quick follow-up after connecting with Roberto.',
+    'SUMMARY:Catch up with Roberto Negro',
+    'DESCRIPTION:Quick follow-up after connecting with Roberto Negro.',
     'END:VEVENT',
     'END:VCALENDAR'
   ];
@@ -589,6 +603,7 @@ function downloadFollowUpEvent(){
   link.click();
   document.body.removeChild(link);
   setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showFollowupToast('reminder');
 }
 
 function openModal(name){
